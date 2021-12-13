@@ -38,6 +38,15 @@ class MyTopo(Topo):
         self.addLink(r1, sw1)
         self.addLink(nas, r1)
 
+        # task 2
+        sw2 = self.addSwitch('sw2')
+        burak = self.addHost('burak', ip='10.0.2.2/25')
+        r2 = self.addHost('r2', ip='10.0.2.1/25')
+
+        self.addLink(burak, sw2)
+        self.addLink(r2, sw2)
+        self.addLink(r1, r2)
+
 
 # configuration
 def conf(network):
@@ -54,6 +63,17 @@ def conf(network):
     network['elias'].cmd('ip route add default via 10.0.0.1')
 
     network['nas'].cmd('ip route add default via 10.0.1.1')
+
+    # task 2
+    network['r1'].cmd('ip addr add 10.0.1.64/31 dev r1-eth2')
+    network['r1'].cmd('ip route add 10.0.2.0/25 via 10.0.1.65')
+
+    network['r2'].cmd('ip addr add 10.0.2.1/25 dev r2-eth0')
+    network['r2'].cmd('ip addr add 10.0.1.65/31 dev r2-eth1')
+    network['r2'].cmd('ip route add 10.0.1.0/29 via 10.0.1.64')
+    network['r2'].cmd('sysctl net.ipv4.conf.all.forwarding=1')
+
+    network['burak'].cmd('ip route add default via 10.0.2.1')
 
 
 def nettopo(**kwargs):
