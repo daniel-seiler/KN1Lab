@@ -41,7 +41,7 @@ class MyTopo(Topo):
         # task 2
         sw2 = self.addSwitch('sw2')
         burak = self.addHost('burak', ip='10.0.2.2/25')
-        r2 = self.addHost('r2', ip='10.0.2.1/25')
+        r2 = self.addHost('r2', ip='10.0.2.1/25')  # /25 subnet -> 2^7 = 128 devices
 
         self.addLink(burak, sw2)
         self.addLink(r2, sw2)
