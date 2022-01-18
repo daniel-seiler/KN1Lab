@@ -1,0 +1,21 @@
+=== Summary ===
+Filename:  2022-01-13_12:22:52-kn1-lab.cnl
+Comment:   
+Hostname:  kn1-lab
+Kernel:    4.19.0-12-amd64
+
+Start:     2022-01-13_12:22:53
+End:       2022-01-13_12:23:57
+Duration:  65
+
+CPUs: CPU0, CPU1
+NICs: sv1-eth0, sv1-eth1, sv1-eth2
+
+== Average transmission rates ==
+sv1-eth0.send:       0.05 MBits/s
+sv1-eth0.receive:       0.01 MBits/s
+sv1-eth1.send:       0.01 MBits/s
+sv1-eth1.receive:       0.46 MBits/s
+sv1-eth2.send:       0.01 MBits/s
+sv1-eth2.receive:       0.46 MBits/s
+
